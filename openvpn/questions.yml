@@ -1,0 +1,36 @@
+categories:
+- network
+questions:
+- variable: persistence.enabled
+  default: "false"
+  description: "Enable persistence using PVC"
+  type: boolean
+  required: true
+  label: Persistent Volume Enabled
+  show_subquestion_if: true
+  group: "Persistent Volume"
+  subquestions:
+  - variable: persistence.size
+    default: "2M"
+    description: "Volume Size"
+    type: string
+    label: Volume Size
+    required: true
+  - variable: persistence.existingClaim
+    default: ""
+    description: "If undefined or null, create a new claim. Defaults to null."
+    type: persistentvolumeclaim
+    label: Existing PersistentVolumeClaim
+  - variable: persistence.storageClass
+    default: ""
+    description: "If undefined or null, uses the default StorageClass. Defaults to null."
+    type: storageclass
+    label: Default storageClass
+  - variable: persistence.accessMode
+    default: "ReadWriteOnce"
+    description: "Use volume as ReadOnly or ReadWrite"
+    type: enum
+    options:
+      - "ReadOnly"
+      - "ReadWriteOnce"
+    label: Access Mode

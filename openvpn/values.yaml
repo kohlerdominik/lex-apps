@@ -53,9 +53,9 @@ persistence:
   size: 2M
 openvpn:
   # Network allocated for openvpn clients (default: 10.240.0.0).
-  OVPN_NETWORK: 10.240.0.0
+  OVPN_NETWORK: 192.168.1.0
   # Network subnet allocated for openvpn client (default: 255.255.0.0).
-  OVPN_SUBNET: 255.255.0.0
+  OVPN_SUBNET: 255.255.255.0
   # Protocol used by openvpn tcp or udp (default: udp).
   OVPN_PROTO: tcp
   # Kubernetes pod network (optional).

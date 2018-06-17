@@ -1,4 +1,7 @@
 # Helm chart for OpenVPN
+This is a customized fork from [kubernetes/charts/stable/openvpn/](https://github.com/kubernetes/charts/tree/master/stable/openvpn). Thanks to jfelten.
+
+
 This chart will install an [OpenVPN](https://openvpn.net/) server inside a kubernetes cluster.  New certificates are generated on install, and a script is provided to generate client keys as needed.  The chart will automatically configure dns to use kube-dns and route all network traffic to kubernetes pods and services through the vpn.  By connecting to this vpn a host is effectively inside a cluster's network.
 
 ### Uses

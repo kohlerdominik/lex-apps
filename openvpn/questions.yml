@@ -19,7 +19,7 @@ questions:
   - variable: persistence.existingClaim
     default: ""
     description: "If undefined or null, create a new claim. Defaults to null."
-    type:  volumeclaim 
+    type: string 
     label: Existing PersistentVolumeClaim
   - variable: persistence.storageClass
     default: ""

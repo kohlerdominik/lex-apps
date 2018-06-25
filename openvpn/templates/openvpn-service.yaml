@@ -18,32 +18,32 @@ spec:
 {{- end }}
   ports:
     - name: openvpn
-      port: {{ .Values.service.portOffset | &0 }}
+      port: {{- printf "%s1" .Values.service.portOffset -}}
       targetPort: {{ .Values.service.internalPort }}
       protocol: {{ .Values.openvpn.OVPN_PROTO | upper }}
     - name: forward1_tcp
-      port: {{ .Values.service.portOffset | &1 }}
-      targetPort: {{ .Values.service.internalPort }}
+      port: {{- printf "%s1" .Values.service.portOffset -}}
+      targetPort: 9901
       protocol: TCP
     - name: forward1_udp
-      port: {{ .Values.service.portOffset | &1 }}
-      targetPort: {{ .Values.service.internalPort }}
+      port: {{- printf "%s1" .Values.service.portOffset -}}
+      targetPort: 9901
       protocol: UDP
     - name: forward2_tcp
-      port: {{ .Values.service.portOffset | &2 }}
-      targetPort: {{ .Values.service.internalPort }}
+      port: {{- printf "%s1" .Values.service.portOffset -}}
+      targetPort: 9902
       protocol: TCP
     - name: forward2_udp
-      port: {{ .Values.service.portOffset | &2 }}
-      targetPort: {{ .Values.service.internalPort }}
+      port: {{- printf "%s1" .Values.service.portOffset -}}
+      targetPort: 9902
       protocol: UDP
     - name: forward3_tcp
-      port: {{ .Values.service.portOffset | &3 }}
-      targetPort: {{ .Values.service.internalPort }}
+      port: {{- printf "%s1" .Values.service.portOffset -}}
+      targetPort: 9903
       protocol: TCP
     - name: forward3_udp
-      port: {{ .Values.service.portOffset | &3 }}
-      targetPort: {{ .Values.service.internalPort }}
+      port: {{- printf "%s1" .Values.service.portOffset -}}
+      targetPort: 9903
       protocol: UDP
   selector:
     app: {{ template "openvpn.name" . }}

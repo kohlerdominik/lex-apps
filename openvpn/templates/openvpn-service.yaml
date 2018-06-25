@@ -26,7 +26,7 @@ spec:
       targetPort: 9901
       protocol: TCP
     - name: forward1_udp
-      port: {{- ( .Values.service.portOffset + 1 ) }} 
+      port: {{- (printf "%s%s" .Values.service.portOffset "1" ) }} 
       targetPort: 9901
       protocol: UDP
   selector:

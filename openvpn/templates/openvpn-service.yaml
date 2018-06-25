@@ -22,9 +22,13 @@ spec:
       targetPort: {{ .Values.service.internalPort }}
       protocol: {{ .Values.openvpn.OVPN_PROTO | upper }}
     - name: forward1_tcp
-    port: {{- (printf "%s%s" "92" "92" ) }}
+      port: {{- (printf "%s%s" .Values.service.portOffset "1" ) }} 
       targetPort: 9901
       protocol: TCP
+    - name: forward1_udp
+      port: {{- ( .Values.service.portOffset + 1 ) }} 
+      targetPort: 9901
+      protocol: UDP
   selector:
     app: {{ template "openvpn.name" . }}
     release: {{ .Release.Name }}

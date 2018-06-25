@@ -33,6 +33,12 @@ spec:
         ports:
         - containerPort: {{ .Values.service.internalPort }}
           name: openvpn
+        - containerPort: 9901
+          name: forward1
+        - containerPort: 9902
+          name: forward2
+        - containerPort: 9903
+          name: forward3
         securityContext:
           capabilities:
             add:
@@ -49,9 +55,7 @@ spec:
             name: openvpn
             readOnly: false
           - mountPath: /etc/openvpn/certs
-            {{- if .Values.persistence.subPath }}
-            subPath: {{ .Values.persistence.subPath }}
-            {{- end }}
+            subPath: {{ .Values.certPath }}
             name: certstorage
             readOnly: false
       volumes:
@@ -59,8 +63,7 @@ spec:
         configMap:
           name: {{ template "openvpn.fullname" . }}
           defaultMode: 0775
-
       - hostPath:
-          path: /mnt/lli-sbo1-certstorageuser/{{ .Values.certPath }}
+          path: /mnt/lli-sbo1-certstorageuser
           type: DirectoryOrCreate
         name: certstorage

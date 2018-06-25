@@ -15,11 +15,10 @@ image:
   pullPolicy: IfNotPresent
 service:
   type: LoadBalancer
-  externalPort: 443
-  internalPort: 443
+  internalPort: 1194
   externalIPs: []
-  nodePort: 32085
-  # loadBalancerIP: 10.0.0.1
+  portOffset: 1194
+
 
   ## Here annotations can be added to the openvpn service
   # annotations:
@@ -33,24 +32,7 @@ resources:
   requests:
     cpu: 25m
     memory: 64Mi
-persistence:
-  enabled: true
-  # subPath: openvpn
-  ## A manually managed Persistent Volume and Claim
-  ## Requires persistence.enabled: true
-  ## If defined, PVC must be created manually before volume will be bound
-  # existingClaim:
 
-  ## openvpn data Persistent Volume Storage Class
-  ## If defined, storageClassName: <storageClass>
-  ## If set to "-", storageClassName: "", which disables dynamic provisioning
-  ## If undefined (the default) or set to null, no storageClassName spec is
-  ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
-  ##   GKE, AWS & OpenStack)
-  ##
-  # storageClass: "-"
-  accessMode: ReadWriteOnce
-  size: 2M
 openvpn:
   # Network allocated for openvpn clients (default: 10.240.0.0).
   OVPN_NETWORK: 192.168.1.0

@@ -62,7 +62,7 @@ Parameter | Description | Default
 `image.tag`                    | `openvpn` image tag                                                  | `1.1.0`
 `image.pullPolicy`             | Image pull policy                                                    | `IfNotPresent`
 `service.type`                 | k8s service type exposing ports, e.g. `NodePort`                     | `LoadBalancer`
-`service.externalPort`         | TCP port reported when creating configuration files                  | `443`
+`service.portOffset`           | Offset for the Portforwarding                                        | 
 `service.internalPort`         | TCP port on which the service works                                  | `443`
 `service.nodePort`             | NodePort value if service.type is `NodePort`                         | `nil` (auto-assigned)
 `service.externalIPs`          | External IPs to listen on                                            | `[]`

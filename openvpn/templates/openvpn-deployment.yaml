@@ -52,17 +52,15 @@ spec:
             {{- if .Values.persistence.subPath }}
             subPath: {{ .Values.persistence.subPath }}
             {{- end }}
-            name: certs
+            name: certstorage
             readOnly: false
       volumes:
       - name: openvpn
         configMap:
           name: {{ template "openvpn.fullname" . }}
           defaultMode: 0775
-      - name: certs
-        {{- if .Values.persistence.enabled }}
-        persistentVolumeClaim:
-          claimName: {{ if .Values.persistence.existingClaim }}{{ .Values.persistence.existingClaim }}{{- else }}{{ template "openvpn.fullname" . }}{{- end }}
-        {{- else }}
-        emptyDir: {}
-        {{- end -}}
+      volumes:
+      - hostPath:
+          path: /mnt/lli-sbo1-certstorageuser
+          type: DirectoryOrCreate
+        name: certstorage

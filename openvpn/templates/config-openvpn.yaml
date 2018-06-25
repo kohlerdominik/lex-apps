@@ -56,7 +56,7 @@ data:
       `cat ${EASY_RSA_LOC}/pki/dh.pem`
       </dh>
       <connection>
-      remote ${MY_IP_ADDR}  {{- printf "%s0" .Values.service.portOffset -}} {{ .Values.openvpn.OVPN_PROTO }}
+      remote ${MY_IP_ADDR}  {{- printf "%s%s" .Values.service.portOffset "0" -}} {{ .Values.openvpn.OVPN_PROTO }}
       </connection>
       EOF
       cat pki/$1.ovpn

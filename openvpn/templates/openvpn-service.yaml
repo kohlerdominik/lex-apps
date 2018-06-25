@@ -22,7 +22,7 @@ spec:
       targetPort: {{ .Values.service.internalPort }}
       protocol: {{ .Values.openvpn.OVPN_PROTO | upper }}
     - name: forward1_tcp
-      port: {{- printf "%s%s" .Values.service.portOffset "1" | quote -}}
+      port: {{- (printf "%s%s" .Values.service.portOffset "1") | quote}}
       targetPort: 9901
       protocol: TCP
   selector:

@@ -1,36 +1,79 @@
 categories:
 - network
 questions:
-- variable: persistence.enabled
-  default: "false"
-  description: "Enable persistence using PVC"
+questions:
+- variable: defaultImage
+  default: "true"
+  description: "Use default Docker images"
+  label: Use Default Images
   type: boolean
-  required: true
-  label: Persistent Volume Enabled
-  show_subquestion_if: true
-  group: "Persistent Volume"
+  show_subquestion_if: false
+  group: "Container Images"
   subquestions:
-  - variable: persistence.size
-    default: "2M"
-    description: "Volume Size"
+  - variable: image
+    default: "jfelten/openvpn-docker"
+    description: "Docker image name"
     type: string
-    label: Volume Size
-    required: true
-  - variable: persistence.existingClaim
-    default: ""
-    description: "If undefined or null, create a new claim. Defaults to null."
-    type: string 
-    label: Existing PersistentVolumeClaim
-  - variable: persistence.storageClass
-    default: ""
-    description: "If undefined or null, uses the default StorageClass. Defaults to null."
-    type: storageclass
-    label: Default storageClass
-  - variable: persistence.accessMode
-    default: "ReadWriteOnce"
-    description: "Use volume as ReadOnly or ReadWrite"
-    type: enum
-    options:
-      - "ReadOnly"
-      - "ReadWriteOnce"
-    label: Access Mode
+    label: Image Name
+  - variable: imageTag
+    default: "1.1.0"
+    description: "Docker image tag"
+    type: string
+    label: Image Tag
+- variable: portPrefix
+  default: ""
+  description: "This is added as port prefix for the Loadbalancer. Must be ####0 - ####9, and not overlap with another server. e.g. `1000` for ports `10000` -  `10009`"
+  type: string
+  required: true
+  label: 
+  group: "General Settings"
+- variable: certPath
+  default: ""
+  description: "Subpath on the volume for certs"
+  type: string
+  required: true
+  label: 
+  group: "General Settings"
+- variable: certPath
+  default: ""
+  description: "Subpath on the volume for certs"
+  type: string
+  required: true
+  label: 
+  group: "General Settings"
+- variable: pf1_destination
+  default: ""
+  description: "Portforwarding Destination IP (e.g. 192.168.1.100)"
+  type: string
+  label: 
+  group: "Port Forwardings"
+- variable: pf1_port
+  default: ""
+  description: "Portforwarding Destination Port (e.g. 80)"
+  type: string
+  label: 
+  group: "Port Forwardings"
+- variable: pf2_destination
+  default: ""
+  description: "Portforwarding Destination IP (e.g. 192.168.1.100)"
+  type: string
+  label: 
+  group: "Port Forwardings"
+- variable: pf2_port
+  default: ""
+  description: "Portforwarding Destination Port (e.g. 80)"
+  type: string
+  label: 
+  group: "Port Forwardings"
+- variable: pf3_destination
+  default: ""
+  description: "Portforwarding Destination IP (e.g. 192.168.1.100)"
+  type: string
+  label: 
+  group: "Port Forwardings"
+- variable: pf3_port
+  default: ""
+  description: "Portforwarding Destination Port (e.g. 80)"
+  type: string
+  label: 
+  group: "Port Forwardings"

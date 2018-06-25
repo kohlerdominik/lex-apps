@@ -8,6 +8,11 @@ metadata:
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 data:
+
+  setup-iptables.sh: |-
+    #!/bin/bash
+    echo "iptables"
+
   setup-certs.sh: |-
     #!/bin/bash
     EASY_RSA_LOC="/etc/openvpn/certs"

@@ -20,7 +20,7 @@ questions:
     description: "Docker image tag"
     type: string
     label: Image Tag
-- variable: portOffset
+- variable: service.portOffset
   default: ""
   description: "This is added as port prefix for the Loadbalancer. Define the Offset for the Ports. e.g. `1234` leads to ports `12340` -  `12349`"
   type: string

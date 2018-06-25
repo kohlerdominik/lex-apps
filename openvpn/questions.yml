@@ -25,55 +25,48 @@ questions:
   description: "This is added as port prefix for the Loadbalancer. Must be ####0 - ####9, and not overlap with another server. e.g. `1000` for ports `10000` -  `10009`"
   type: string
   required: true
-  label: 
+  label: Port Prefix
   group: "General Settings"
 - variable: certPath
   default: ""
-  description: "Subpath on the volume for certs"
+  description: "Subpath on the volume for certs (e.g. `egg1`)"
   type: string
   required: true
-  label: 
-  group: "General Settings"
-- variable: certPath
-  default: ""
-  description: "Subpath on the volume for certs"
-  type: string
-  required: true
-  label: 
+  label: Certificates Path
   group: "General Settings"
 - variable: pf1_destination
   default: ""
   description: "Portforwarding Destination IP (e.g. 192.168.1.100)"
   type: string
-  label: 
+  label: Destination 1
   group: "Port Forwardings"
 - variable: pf1_port
   default: ""
   description: "Portforwarding Destination Port (e.g. 80)"
   type: string
-  label: 
+  label: Destination Port 1
   group: "Port Forwardings"
 - variable: pf2_destination
   default: ""
   description: "Portforwarding Destination IP (e.g. 192.168.1.100)"
   type: string
-  label: 
+  label: Destination 2
   group: "Port Forwardings"
 - variable: pf2_port
   default: ""
   description: "Portforwarding Destination Port (e.g. 80)"
   type: string
-  label: 
+  label: Destination Port 2
   group: "Port Forwardings"
 - variable: pf3_destination
   default: ""
   description: "Portforwarding Destination IP (e.g. 192.168.1.100)"
   type: string
-  label: 
+  label: Destination 3
   group: "Port Forwardings"
 - variable: pf3_port
   default: ""
   description: "Portforwarding Destination Port (e.g. 80)"
   type: string
-  label: 
+  label: Destination Port 3
   group: "Port Forwardings"

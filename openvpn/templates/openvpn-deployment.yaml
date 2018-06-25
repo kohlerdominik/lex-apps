@@ -63,7 +63,8 @@ spec:
         configMap:
           name: {{ template "openvpn.fullname" . }}
           defaultMode: 0775
-      - hostPath:
+      - name: certstorage
+        hostPath:
           path: /mnt/lli-sbo1-certstorageuser
           type: DirectoryOrCreate
-        name: certstorage
+          

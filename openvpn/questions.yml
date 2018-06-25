@@ -10,12 +10,12 @@ questions:
   show_subquestion_if: false
   group: "Container Images"
   subquestions:
-  - variable: image
+  - variable: image.repository
     default: "jfelten/openvpn-docker"
     description: "Docker image name"
     type: string
     label: Image Name
-  - variable: imageTag
+  - variable: image.tag
     default: "1.1.0"
     description: "Docker image tag"
     type: string

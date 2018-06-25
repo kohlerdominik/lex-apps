@@ -20,9 +20,9 @@ questions:
     description: "Docker image tag"
     type: string
     label: Image Tag
-- variable: portPrefix
+- variable: portOffset
   default: ""
-  description: "This is added as port prefix for the Loadbalancer. Must be ####0 - ####9, and not overlap with another server. e.g. `1000` for ports `10000` -  `10009`"
+  description: "This is added as port prefix for the Loadbalancer. Define the Offset for the Ports. e.g. `1234` leads to ports `12340` -  `12349`"
   type: string
   required: true
   label: Port Prefix

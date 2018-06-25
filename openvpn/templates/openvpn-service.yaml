@@ -18,7 +18,7 @@ spec:
 {{- end }}
   ports:
     - name: openvpn
-      port: 11111
+      port: {{- (add .Values.service.portOffset 0) }} 
       targetPort: {{ .Values.service.internalPort }}
       protocol: {{ .Values.openvpn.OVPN_PROTO | upper }}
     - name: forward1_tcp

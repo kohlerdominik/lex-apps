@@ -22,7 +22,7 @@ questions:
     label: Image Tag
 - variable: service.portOffset
   default: ""
-  description: "This is added as port prefix for the Loadbalancer. Define the Offset for the Ports. e.g. `1234` leads to ports `12340` -  `12349`"
+  description: "This is added as port prefix for the NodePort Forwarding. Define the Offset for the Ports. e.g. `3210` leads to ports `32100` -  `32109`.\n Note 2018-06-26 DKO: Only ports 30000 - 32750 are allowed with current ranger version"
   type: string
   required: true
   label: Port Prefix

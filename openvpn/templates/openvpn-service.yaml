@@ -25,6 +25,10 @@ spec:
       port: {{ (add .Values.service.portOffset 1) }} 
       targetPort: 9901
       protocol: UDP
+    - name: svc2-udp
+      port: {{ (add .Values.service.portOffset 2) }} 
+      targetPort: 9902
+      protocol: UDP
   selector:
     app: {{ template "openvpn.name" . }}
     release: {{ .Release.Name }}

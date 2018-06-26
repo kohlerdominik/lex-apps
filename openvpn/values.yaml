@@ -14,10 +14,10 @@ image:
   tag: 1.1.0
   pullPolicy: IfNotPresent
 service:
-  type: LoadBalancer
+  type: NodePort
   internalPort: 1194
   externalIPs: []
-  portOffset: 1194
+  portOffset: 0
 
 
   ## Here annotations can be added to the openvpn service

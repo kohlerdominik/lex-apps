@@ -16,6 +16,39 @@ spec:
   externalIPs:
 {{ toYaml .Values.service.externalIPs | indent 4 }}
 {{- end }}
+  ports:
+    - name: openvpn-udp
+      targetPort: {{ .Values.service.internalPort }}
+      protocol: UDP
+      nodePort: {{ (add .Values.service.portOffset 0) }}
+    - name: openvpn-tcp
+      targetPort: {{ .Values.service.internalPort }}
+      protocol: TCP
+      nodePort: {{ (add .Values.service.portOffset 0) }}
+    - name: pfwd1-udp
+      targetPort: 9901
+      protocol: UDP
+      nodePort: {{ (add .Values.service.portOffset 1) }}
+    - name: pfwd1-tcp
+      targetPort: 9901
+      protocol: TCP
+      nodePort: {{ (add .Values.service.portOffset 1) }}
+    - name: pfwd2-udp
+      targetPort: 9902
+      protocol: UDP
+      nodePort: {{ (add .Values.service.portOffset 2) }}
+    - name: pfwd2-tcp
+      targetPort: 9902
+      protocol: TCP
+      nodePort: {{ (add .Values.service.portOffset 2) }}
+    - name: pfwd3-udp
+      targetPort: 9903
+      protocol: UDP
+      nodePort: {{ (add .Values.service.portOffset 3) }}
+    - name: pfwd3-tcp
+      targetPort: 9903
+      protocol: TCP
+      nodePort: {{ (add .Values.service.portOffset 3) }}
   selector:
     app: {{ template "openvpn.name" . }}
     release: {{ .Release.Name }}

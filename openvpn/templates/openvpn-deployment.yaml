@@ -30,39 +30,6 @@ spec:
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         command: ["/etc/openvpn/setup/configure.sh"]
-        ports:
-        - name: openvpn-udp
-          containerPort: {{ .Values.service.internalPort }}
-          protocol: UDP
-          nodePort: {{ (add .Values.service.portOffset 0) }}
-        - name: openvpn-tcp
-          containerPort: {{ .Values.service.internalPort }}
-          protocol: TCP
-          nodePort: {{ (add .Values.service.portOffset 0) }}
-        - name: pfwd1-udp
-          containerPort: 9901
-          protocol: UDP
-          nodePort: {{ (add .Values.service.portOffset 1) }}
-        - name: pfwd1-tcp
-          containerPort: 9901
-          protocol: TCP
-          nodePort: {{ (add .Values.service.portOffset 1) }}
-        - name: pfwd2-udp
-          containerPort: 9902
-          protocol: UDP
-          nodePort: {{ (add .Values.service.portOffset 2) }}
-        - name: pfwd2-tcp
-          containerPort: 9902
-          protocol: TCP
-          nodePort: {{ (add .Values.service.portOffset 2) }}
-        - name: pfwd3-udp
-          containerPort: 9903
-          protocol: UDP
-          nodePort: {{ (add .Values.service.portOffset 3) }}
-        - name: pfwd3-tcp
-          containerPort: 9903
-          protocol: TCP
-          nodePort: {{ (add .Values.service.portOffset 3) }}
         securityContext:
           capabilities:
             add:

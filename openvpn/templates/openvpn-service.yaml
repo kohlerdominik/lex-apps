@@ -18,11 +18,11 @@ spec:
 {{- end }}
   ports:
     - name: openvpn
-      port: {{- (add .Values.service.portOffset 0) }} 
-      targetPort: 123 
-      protocol: UDP 
+      port: {{ (add .Values.service.portOffset 0) }} 
+      targetPort: 1194 
+      protocol: UDP
     - name: svc1-udp
-      port: 999 
+      port: {{ (add .Values.service.portOffset 1) }} 
       targetPort: 9901
       protocol: UDP
   selector:

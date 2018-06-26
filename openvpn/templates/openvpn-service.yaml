@@ -24,7 +24,7 @@ spec:
     - name: svc1-udp
       port: 999 
       targetPort: 9901
-      protocol: udp
+      protocol: UDP
   selector:
     app: {{ template "openvpn.name" . }}
     release: {{ .Release.Name }}

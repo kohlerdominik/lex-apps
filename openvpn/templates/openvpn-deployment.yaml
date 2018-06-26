@@ -34,35 +34,35 @@ spec:
         - name: openvpn-udp
           containerPort: {{ .Values.service.internalPort }}
           protocol: UDP
-          sourcePort: {{ (add .Values.service.portOffset 0) }}
+          nodePort: {{ (add .Values.service.portOffset 0) }}
         - name: openvpn-tcp
           containerPort: {{ .Values.service.internalPort }}
           protocol: TCP
-          sourcePort: {{ (add .Values.service.portOffset 0) }}
+          nodePort: {{ (add .Values.service.portOffset 0) }}
         - name: pfwd1-udp
           containerPort: 9901
           protocol: UDP
-          sourcePort: {{ (add .Values.service.portOffset 1) }}
+          nodePort: {{ (add .Values.service.portOffset 1) }}
         - name: pfwd1-tcp
           containerPort: 9901
           protocol: TCP
-          sourcePort: {{ (add .Values.service.portOffset 1) }}
+          nodePort: {{ (add .Values.service.portOffset 1) }}
         - name: pfwd2-udp
           containerPort: 9902
           protocol: UDP
-          sourcePort: {{ (add .Values.service.portOffset 2) }}
+          nodePort: {{ (add .Values.service.portOffset 2) }}
         - name: pfwd2-tcp
           containerPort: 9902
           protocol: TCP
-          sourcePort: {{ (add .Values.service.portOffset 2) }}
+          nodePort: {{ (add .Values.service.portOffset 2) }}
         - name: pfwd3-udp
           containerPort: 9903
           protocol: UDP
-          sourcePort: {{ (add .Values.service.portOffset 3) }}
+          nodePort: {{ (add .Values.service.portOffset 3) }}
         - name: pfwd3-tcp
           containerPort: 9903
           protocol: TCP
-          sourcePort: {{ (add .Values.service.portOffset 3) }}
+          nodePort: {{ (add .Values.service.portOffset 3) }}
         securityContext:
           capabilities:
             add:

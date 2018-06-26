@@ -16,7 +16,15 @@ spec:
   externalIPs:
 {{ toYaml .Values.service.externalIPs | indent 4 }}
 {{- end }}
-
+  ports:
+    - name: openvpn
+      port: 123 
+      targetPort: 123 
+      protocol: UDP 
+    - name: forward1_tcp
+      port: 123 
+      targetPort: 9901
+      protocol: TCP
   selector:
     app: {{ template "openvpn.name" . }}
     release: {{ .Release.Name }}

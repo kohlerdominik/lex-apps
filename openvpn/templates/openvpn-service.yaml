@@ -16,15 +16,7 @@ spec:
   externalIPs:
 {{ toYaml .Values.service.externalIPs | indent 4 }}
 {{- end }}
-  ports:
-    - name: openvpn
-      port: {{- (add .Values.service.portOffset 0) }} 
-      targetPort: {{ .Values.service.internalPort }}
-      protocol: {{ .Values.openvpn.OVPN_PROTO | upper }}
-    - name: forward1_tcp
-      port: {{- (add .Values.service.portOffset 1) }} 
-      targetPort: 9901
-      protocol: TCP
+
   selector:
     app: {{ template "openvpn.name" . }}
     release: {{ .Release.Name }}

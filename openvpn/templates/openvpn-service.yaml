@@ -16,19 +16,6 @@ spec:
   externalIPs:
 {{ toYaml .Values.service.externalIPs | indent 4 }}
 {{- end }}
-  ports:
-    - name: openvpn
-      port: {{ (add .Values.service.portOffset 0) }} 
-      targetPort: 1194 
-      protocol: UDP
-    - name: svc1-udp
-      port: {{ (add .Values.service.portOffset 1) }} 
-      targetPort: 9901
-      protocol: UDP
-    - name: svc2-udp
-      port: {{ (add .Values.service.portOffset 2) }} 
-      targetPort: 9902
-      protocol: UDP
   selector:
     app: {{ template "openvpn.name" . }}
     release: {{ .Release.Name }}

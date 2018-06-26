@@ -30,8 +30,6 @@ spec:
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         command: ["/etc/openvpn/setup/configure.sh"]
-        ports:
-          - container-port: 9901
         securityContext:
           capabilities:
             add:

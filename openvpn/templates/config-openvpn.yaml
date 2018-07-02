@@ -11,7 +11,14 @@ data:
 
   setup-iptables.sh: |-
     #!/bin/bash
+
+    iptables -t nat -A PREROUTING -p tcp --dport 9901 -j DNAT --to-destination {{ pf1_destination }}:{{ pf1_port }}
+    iptables -t nat -A PREROUTING -p tcp --dport 9902 -j DNAT --to-destination {{ pf2_destination }}:{{ pf2_port }}
+    iptables -t nat -A PREROUTING -p tcp --dport 9903 -j DNAT --to-destination {{ pf3_destination }}:{{ pf3_port }}
+
+    iptables -t nat -A POSTROUTING -p tcp -o tun0 -j MASQUERADE
     echo "iptables"
+
 
   setup-certs.sh: |-
     #!/bin/bash
@@ -64,7 +71,7 @@ data:
   configure.sh: |-
       #!/bin/sh
       /etc/openvpn/setup/setup-certs.sh
-      iptables -t nat -A POSTROUTING -s {{ .Values.openvpn.OVPN_NETWORK }}/{{ .Values.openvpn.OVPN_SUBNET }} -o eth0 -j MASQUERADE
+      #iptables -t nat -A POSTROUTING -s {{ .Values.openvpn.OVPN_NETWORK }}/{{ .Values.openvpn.OVPN_SUBNET }} -o eth0 -j MASQUERADE
       mkdir -p /dev/net
       if [ ! -c /dev/net/tun ]; then
           mknod /dev/net/tun c 10 200

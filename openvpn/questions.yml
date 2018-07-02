@@ -34,37 +34,37 @@ questions:
   required: true
   label: Certificates Path
   group: "General Settings"
-- variable: pf1_destination
+- variable: routing.pf1.destination
   default: ""
   description: "Portforwarding Destination IP (e.g. 192.168.1.100)"
   type: string
   label: Destination 1
   group: "Port Forwardings"
-- variable: pf1_port
+- variable: routing.pf1.port
   default: ""
   description: "Portforwarding Destination Port (e.g. 80)"
   type: string
   label: Destination Port 1
   group: "Port Forwardings"
-- variable: pf2_destination
+- variable: routing.pf2.destination
   default: ""
   description: "Portforwarding Destination IP (e.g. 192.168.1.100)"
   type: string
   label: Destination 2
   group: "Port Forwardings"
-- variable: pf2_port
+- variable: routing.pf2.port
   default: ""
   description: "Portforwarding Destination Port (e.g. 80)"
   type: string
-  label: Destination Port 2
+  label: Destination Port 3
   group: "Port Forwardings"
-- variable: pf3_destination
+- variable: routing.pf3.destination
   default: ""
   description: "Portforwarding Destination IP (e.g. 192.168.1.100)"
   type: string
   label: Destination 3
   group: "Port Forwardings"
-- variable: pf3_port
+- variable: routing.pf3.port
   default: ""
   description: "Portforwarding Destination Port (e.g. 80)"
   type: string

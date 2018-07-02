@@ -101,7 +101,7 @@ data:
       openvpn --config /etc/openvpn/openvpn.conf
   openvpn.conf: |-
       server {{ .Values.openvpn.OVPN_NETWORK }} {{ .Values.openvpn.OVPN_SUBNET }}
-      topology subnet
+      #topology subnet
       verb 3
       key /etc/openvpn/certs/pki/private/server.key
       ca /etc/openvpn/certs/pki/ca.crt
@@ -121,13 +121,13 @@ data:
       user nobody
       group nogroup
 
-      ifconfig {{ .Values.openvpn.OVPN_NETWORK }}  255.255.255.
+      #ifconfig {{ add .Values.openvpn.OVPN_NETWORK }} {{ .Values.openvpn.OVPN_SUBNET }}
 
       route {{ .Values.openvpn.route.ip }} {{ .Values.openvpn.route.mask }}
       iroute {{ .Values.openvpn.route.ip }} {{ .Values.openvpn.route.mask }}
 
-      ifconfig-push 10.10.1ZZ.X 255.255.255.0
-      push "route 10.2YY.200.0 255.255.255.0 10.10.1ZZ.1"
+      #ifconfig-push 10.10.1ZZ.X 255.255.255.0
+      #push "route 10.2YY.200.0 255.255.255.0 10.10.1ZZ.1"
 
       push "route NETWORK 255.255.240.0"
 {{ if (.Values.openvpn.OVPN_K8S_POD_NETWORK) (.Values.openvpn.OVPN_K8S_POD_SUBNET) }}

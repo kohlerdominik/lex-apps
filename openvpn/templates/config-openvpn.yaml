@@ -39,9 +39,15 @@ data:
 
   newClientCert.sh: |-
       #!/bin/bash
+      if [ $# -ne 2 ]
+      then
+        echo "Usage: $0 <CLIENT_KEY_NAME> <HOST_IP>
+        exit
+      fi
+
       EASY_RSA_LOC="/etc/openvpn/certs"
       cd $EASY_RSA_LOC
-      MY_IP_ADDR="$2"
+      HOST_IP="$2"
       ./easyrsa build-client-full $1 nopass
       cat >${EASY_RSA_LOC}/pki/$1.ovpn <<EOF
       client
@@ -63,7 +69,7 @@ data:
       `cat ${EASY_RSA_LOC}/pki/dh.pem`
       </dh>
       <connection>
-      remote ${MY_IP_ADDR}  11111 {{ .Values.openvpn.OVPN_PROTO }}
+      remote ${HOST_IP}  11111 {{ .Values.openvpn.OVPN_PROTO }}
       </connection>
       EOF
       cat pki/$1.ovpn
@@ -95,6 +101,7 @@ data:
       openvpn --config /etc/openvpn/openvpn.conf
   openvpn.conf: |-
       server {{ .Values.openvpn.OVPN_NETWORK }} {{ .Values.openvpn.OVPN_SUBNET }}
+      topology subnet
       verb 3
       key /etc/openvpn/certs/pki/private/server.key
       ca /etc/openvpn/certs/pki/ca.crt
@@ -108,11 +115,19 @@ data:
 
       proto {{ .Values.openvpn.OVPN_PROTO }}
       port  {{ .Values.service.internalPort }}
-      dev tun0
+      dev tun
       status /tmp/openvpn-status.log
 
       user nobody
       group nogroup
+
+      ifconfig {{ .Values.openvpn.OVPN_NETWORK }}  255.255.255.
+
+      route {{ .Values.openvpn.route.ip }} {{ .Values.openvpn.route.mask }}
+      iroute {{ .Values.openvpn.route.ip }} {{ .Values.openvpn.route.mask }}
+
+      ifconfig-push 10.10.1ZZ.X 255.255.255.0
+      push "route 10.2YY.200.0 255.255.255.0 10.10.1ZZ.1"
 
       push "route NETWORK 255.255.240.0"
 {{ if (.Values.openvpn.OVPN_K8S_POD_NETWORK) (.Values.openvpn.OVPN_K8S_POD_SUBNET) }}

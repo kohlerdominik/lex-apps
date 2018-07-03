@@ -62,9 +62,6 @@ data:
       dev tun
       cipher AES-256-CBC
       key-direction 1
-      {{- if .Values.openvpn.redirectGateway }}
-      redirect-gateway def1
-      {{- end }}
       <key>
       `cat ${EASY_RSA_LOC}/pki/private/${SERVICE_ID}.key`
       </key>

@@ -96,7 +96,7 @@ data:
       SERVICE_ID={{ .Values.general.service_id }}
       SERVER_ADDRESS={{ .Values.vpn.server_address }}
       SERVER_PORT={{  (add .Values.vpn.sever_port 0)  }}
-      CONNECTION_PROTOCOL ={{  .Values.vpn.connection_protocol  }}
+      CONNECTION_PROTOCOL={{  .Values.vpn.connection_protocol  }}
       EASY_RSA_LOC="/etc/openvpn/certs"
 
       # apply iptables

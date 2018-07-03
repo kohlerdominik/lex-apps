@@ -83,6 +83,7 @@ data:
 
   configure.sh: |-
       #!/bin/sh
+      /etc/openvpn/setup/setup-iptables.sh
       /etc/openvpn/setup/setup-certs.sh
       iptables -t nat -A POSTROUTING -s {{ .Values.openvpn.OVPN_NETWORK }}/{{ .Values.openvpn.OVPN_SUBNET }} -o eth0 -j MASQUERADE
       mkdir -p /dev/net

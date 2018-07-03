@@ -120,7 +120,7 @@ data:
       dev tun
       status /tmp/openvpn-status.log
 
-      cypher AES-256-CBC
+      cipher AES-256-CBC
 
       user nobody
       group nogroup

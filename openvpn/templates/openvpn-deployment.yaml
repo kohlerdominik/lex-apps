@@ -31,7 +31,6 @@ spec:
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         command: ["/etc/openvpn/setup/configure.sh"]
         securityContext:
-          readOnlyRootFilesystem: true  
           privileged: false
           capabilities:
             add:

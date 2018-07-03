@@ -1,7 +1,6 @@
 categories:
 - network
 questions:
-questions:
 - variable: defaultImage
   default: "true"
   description: "Use default Docker images"
@@ -20,68 +19,87 @@ questions:
     description: "Docker image tag"
     type: string
     label: Image Tag
-- variable: service.portOffset
+
+- variable: general.service_id
   default: ""
-  description: "This is added as port prefix for the NodePort Forwarding. Define the Offset for the Ports. e.g. `3210` leads to ports `32100` -  `32109`.\n Note 2018-06-26 DKO: Only ports 30000 - 32750 are allowed with current ranger version"
+  description: "Unique Identifier for the service. Pattern: CountryCodecZipAddress-Name-Service. Example: CH6060kagiswilerstr29-een-lli1 or CH3860funtenenstr1-een-lli1"
   type: string
   required: true
-  label: Port Prefix
+  label: Service ID
   group: "General Settings"
-- variable: certPath
+
+- variable: vpn.server_address
   default: ""
-  description: "Subpath on the volume for certs (e.g. `egg1`)"
+  description: "Server address which the client connects to."
   type: string
   required: true
-  label: Certificates Path
-  group: "General Settings"
-- variable: openvpn.route.ip
+  label: Server Address
+  group: "VPN Settings"
+- variable: vpn.server_port
+  default: ""
+  description: "(Exposed) Server port which the client connects to. This port +1 ... +9 also defines ports for port forwarding"
+  type: string
+  required: true
+  label: Server Port
+  group: "VPN Settings"
+- variable: vpn.connection_protocol
+  default: "udp"
+  description: "Protocol for incoming client connections"
+  type: string
+  required: true
+  label: Connection Protocol
+  group: "VPN Settings"
+
+- variable: client.network_ip
   default: "192.168.1.0"
-  description: ""
+  description: "The device network on clients side"
   type: string
   required: true
   label: Client Network IP
-  group: "Network Settings"
-- variable: openvpn.route.mask
+  group: "Client Settings"
+- variable: client.network_mask
   default: "255.255.255.0"
-  description: ""
+  description: "The device network mask on clients side"
   type: string
   required: true
   label: Client Network Mask
-  group: "Network Settings"
-- variable: routing.pf1.destination
+  group: "Client Settings"
+
+
+- variable: forwarding.pf1.destination
   default: ""
-  description: "Portforwarding Destination IP (e.g. 192.168.1.100)"
+  description: "Port forwarding Destination IP (e.g. 192.168.1.100)"
   type: string
   label: Destination 1
-  group: "Port Forwardings"
-- variable: routing.pf1.port
+  group: "Port Forwarding"
+- variable: forwarding.pf1.port
   default: ""
-  description: "Portforwarding Destination Port (e.g. 80)"
+  description: "Port forwarding Destination Port (e.g. 80)"
   type: string
   label: Destination Port 1
-  group: "Port Forwardings"
-- variable: routing.pf2.destination
+  group: "Port Forwarding"
+- variable: forwarding.pf2.destination
   default: ""
-  description: "Portforwarding Destination IP (e.g. 192.168.1.100)"
+  description: "Port forwarding Destination IP (e.g. 192.168.1.100)"
   type: string
   label: Destination 2
-  group: "Port Forwardings"
-- variable: routing.pf2.port
+  group: "Port Forwarding"
+- variable: forwarding.pf2.port
   default: ""
-  description: "Portforwarding Destination Port (e.g. 80)"
+  description: "Port forwarding Destination Port (e.g. 80)"
   type: string
   label: Destination Port 3
-  group: "Port Forwardings"
-- variable: routing.pf3.destination
+  group: "Port Forwarding"
+- variable: forwarding.pf3.destination
   default: ""
-  description: "Portforwarding Destination IP (e.g. 192.168.1.100)"
+  description: "Port forwarding Destination IP (e.g. 192.168.1.100)"
   type: string
   label: Destination 3
-  group: "Port Forwardings"
-- variable: routing.pf3.port
+  group: "Port Forwarding"
+- variable: forwarding.pf3.port
   default: ""
-  description: "Portforwarding Destination Port (e.g. 80)"
+  description: "Port forwarding Destination Port (e.g. 80)"
   type: string
   label: Destination Port 3
-  group: "Port Forwardings"
+  group: "Port Forwarding"
   

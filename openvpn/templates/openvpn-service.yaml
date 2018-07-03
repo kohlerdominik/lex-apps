@@ -20,43 +20,43 @@ spec:
     - name: openvpn-udp
       targetPort: {{ .Values.service.internalPort }}
       protocol: UDP
-      port: {{ (add .Values.service.portOffset 0) }}
-      nodePort: {{ (add .Values.service.portOffset 0) }}
+      port: {{ (add .Values.vpn.server_port 0) }}
+      nodePort: {{ (add .Values.vpn.server_port 0) }}
     - name: openvpn-tcp
       targetPort: {{ .Values.service.internalPort }}
       protocol: TCP
-      port: {{ (add .Values.service.portOffset 0) }}
-      nodePort: {{ (add .Values.service.portOffset 0) }}
+      port: {{ (add .Values.vpn.server_port 0) }}
+      nodePort: {{ (add .Values.vpn.server_port 0) }}
     - name: pfwd1-udp
       targetPort: 9901
       protocol: UDP
-      port: {{ (add .Values.service.portOffset 1) }}
-      nodePort: {{ (add .Values.service.portOffset 1) }}
+      port: {{ (add .Values.vpn.server_port 1) }}
+      nodePort: {{ (add .Values.vpn.server_port 1) }}
     - name: pfwd1-tcp
       targetPort: 9901
       protocol: TCP
-      port: {{ (add .Values.service.portOffset 1) }}
-      nodePort: {{ (add .Values.service.portOffset 1) }}
+      port: {{ (add .Values.vpn.server_port 1) }}
+      nodePort: {{ (add .Values.vpn.server_port 1) }}
     - name: pfwd2-udp
       targetPort: 9902
       protocol: UDP
-      port: {{ (add .Values.service.portOffset 2) }}
-      nodePort: {{ (add .Values.service.portOffset 2) }}
+      port: {{ (add .Values.vpn.server_port 2) }}
+      nodePort: {{ (add .Values.vpn.server_port 2) }}
     - name: pfwd2-tcp
       targetPort: 9902
       protocol: TCP
-      port: {{ (add .Values.service.portOffset 2) }}
-      nodePort: {{ (add .Values.service.portOffset 2) }}
+      port: {{ (add .Values.vpn.server_port 2) }}
+      nodePort: {{ (add .Values.vpn.server_port 2) }}
     - name: pfwd3-udp
       targetPort: 9903
       protocol: UDP
-      port: {{ (add .Values.service.portOffset 3) }}
-      nodePort: {{ (add .Values.service.portOffset 3) }}
+      port: {{ (add .Values.vpn.server_port 3) }}
+      nodePort: {{ (add .Values.vpn.server_port 3) }}
     - name: pfwd3-tcp
       targetPort: 9903
       protocol: TCP
-      port: {{ (add .Values.service.portOffset 3) }}
-      nodePort: {{ (add .Values.service.portOffset 3) }}
+      port: {{ (add .Values.vpn.server_port 3) }}
+      nodePort: {{ (add .Values.vpn.server_port 3) }}
   selector:
     app: {{ template "openvpn.name" . }}
     release: {{ .Release.Name }}

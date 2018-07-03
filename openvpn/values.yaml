@@ -17,8 +17,6 @@ service:
   type: NodePort
   internalPort: 1194
   externalIPs: []
-  portOffset: 0
-
 
   ## Here annotations can be added to the openvpn service
   # annotations:
@@ -33,30 +31,36 @@ resources:
     cpu: 25m
     memory: 64Mi
 
-openvpn:
-  # Network allocated for openvpn clients (default: 10.240.0.0).
-  OVPN_NETWORK: 172.30.30.0
-  # Network subnet allocated for openvpn client (default: 255.255.0.0).
-  OVPN_SUBNET: 255.255.255.0
-  # Protocol used by openvpn tcp or udp (default: udp).
-  OVPN_PROTO: tcp
-  # Kubernetes pod network (optional).
-  OVPN_K8S_POD_NETWORK: ""
-  # Kubernetes pod network subnet (optional).
-  OVPN_K8S_POD_SUBNET: ""
-  # Push a `dhcp-option DOMAIN` config
-  dhcpOptionDomain: false
-  # Redirect all client traffic through VPN
-  redirectGateway: false
+general:
+  service_id: undefined  
+
+vpn:
+  # Server address for the client.
+  server_address: 0.0.0.0
+  # Server port for the client.
+  server_port: 0
+  # Protocol used for connection. tcp or udp (default: udp).
+  connection_protocol: udp
+  # Network used for openvpn clients.
+  tunnel_network: 172.30.30.0
+  # Network mask used for openvpn client.
+  tunnel_mask: 255.255.255.0
+  # Tunnel IPs
+  tunnel_server_ip: 172.30.30.1
+  tunnel_client_ip: 172.30.30.2
   # Arbitrary lines appended to the end of the server configuration file
   # conf: |
   #  max-clients 100
   #  client-to-client
-  route: 
-    ip: 192.168.1.0
-    mask: 255.255.255.0
 
-routing:
+client: 
+  # Network behind the client
+  network_ip: 192.168.1.0
+  # Network Mask behind the client
+  network_mask: 255.255.255.0
+
+
+forwarding:
   pf1:
     destination: 127.0.0.1
     port: 8999

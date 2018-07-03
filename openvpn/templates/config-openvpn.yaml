@@ -114,7 +114,8 @@ data:
       fi
 
       cp -f /etc/openvpn/setup/openvpn.conf /etc/openvpn/
-      cp -f /etc/openvpn/setup/client-ccd /etc/openvpn/ccd/${SERVICE_ID}
+      mkdir -p /etc/openvpn/ccd/
+      cp -f /etc/openvpn/setup/client-ccd.conf /etc/openvpn/ccd/${SERVICE_ID}
 
       openvpn --config /etc/openvpn/openvpn.conf
 
@@ -148,3 +149,6 @@ data:
       group nogroup
 
       verb 3
+
+  client-ccd.conf: |-
+    #test ccd values

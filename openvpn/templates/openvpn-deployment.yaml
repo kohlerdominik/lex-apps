@@ -56,6 +56,6 @@ spec:
           defaultMode: 0775
       - name: certstorage
         hostPath:
-          path: /mnt/lli-sbo1-certstorageuser/{{ .Values.certPath }}
+          path: /mnt/lli-sbo1-certstorageuser/{{ .Values.general.service_id }}
           type: DirectoryOrCreate
        

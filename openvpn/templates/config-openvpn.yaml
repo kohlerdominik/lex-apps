@@ -12,11 +12,11 @@ data:
   setup-iptables.sh: |-
     #!/bin/bash
 
-    iptables -t nat -A PREROUTING -p tcp --dport 9901 -j DNAT --to-destination {{ .Values.routing.pf1.destination }}:{{ .Values.routing.pf1.port }}
-    iptables -t nat -A PREROUTING -p tcp --dport 9902 -j DNAT --to-destination {{ .Values.routing.pf2.destination }}:{{ .Values.routing.pf2.port }}
-    iptables -t nat -A PREROUTING -p tcp --dport 9903 -j DNAT --to-destination {{ .Values.routing.pf3.destination }}:{{ .Values.routing.pf3.port }}
+    iptables -t nat -A PREROUTING -p all --dport 9901 -j DNAT --to-destination {{ .Values.routing.pf1.destination }}:{{ .Values.routing.pf1.port }}
+    iptables -t nat -A PREROUTING -p all --dport 9902 -j DNAT --to-destination {{ .Values.routing.pf2.destination }}:{{ .Values.routing.pf2.port }}
+    iptables -t nat -A PREROUTING -p all --dport 9903 -j DNAT --to-destination {{ .Values.routing.pf3.destination }}:{{ .Values.routing.pf3.port }}
 
-    iptables -t nat -A POSTROUTING -p tcp -o tun0 -j MASQUERADE
+    iptables -t nat -A POSTROUTING -p all -o tun0 -j MASQUERADE
     echo "iptables"
 
 

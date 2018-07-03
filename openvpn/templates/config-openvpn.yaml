@@ -56,6 +56,7 @@ data:
       nobind
       dev tun
       cipher AES-256-CBC
+      key-direction 1
       {{- if .Values.openvpn.redirectGateway }}
       redirect-gateway def1
       {{- end }}

@@ -34,7 +34,7 @@ data:
       echo "ca\n" | ./easyrsa build-ca nopass
       ./easyrsa build-server-full server nopass
       ./easyrsa gen-dh
-      openvpn --genkey --secret ta.key
+      openvpn --genkey --secret pki/ta.key
     fi
 
 

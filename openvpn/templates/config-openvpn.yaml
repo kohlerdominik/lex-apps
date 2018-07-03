@@ -72,7 +72,7 @@ data:
       `cat ${EASY_RSA_LOC}/pki/dh.pem`
       </dh>
       <tls-auth>
-      `cat ${EASY_RSA_LOC}/ta.key`
+      `cat ${EASY_RSA_LOC}/pki/ta.key`
       </tls-auth>
       <connection>
       remote ${HOST_IP} {{ (add .Values.service.portOffset 0) }} {{ .Values.openvpn.OVPN_PROTO }}
@@ -114,8 +114,7 @@ data:
       ca /etc/openvpn/certs/pki/ca.crt
       cert /etc/openvpn/certs/pki/issued/server.crt
       dh /etc/openvpn/certs/pki/dh.pem
-      
-      tls-auth certs/ta.key 0
+      tls-auth /etc/openvpn/certs/pki/ta.key 0
 
       key-direction 0
       keepalive 10 60

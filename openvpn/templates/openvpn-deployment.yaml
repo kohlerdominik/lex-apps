@@ -48,6 +48,10 @@ spec:
           - mountPath: /etc/openvpn/certs/
             name: certstorage
             readOnly: false
+      securityContext:
+      sysctls:
+      - name: net.ipv4.ip_forward
+        value: "1"
       volumes:
       - name: openvpn
         configMap:

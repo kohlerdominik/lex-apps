@@ -30,6 +30,8 @@ spec:
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         command: ["/etc/openvpn/setup/configure.sh"]
+        privileged: true
+        readOnly: false
         securityContext:
           capabilities:
             add:

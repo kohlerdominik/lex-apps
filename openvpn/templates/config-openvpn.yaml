@@ -133,7 +133,7 @@ data:
       user nobody
       group nogroup
 
-      route {{ .Values.openvpn.route.ip }} {{ .Values.openvpn.route.mask }}
+      route {{ .Values.openvpn.route.ip }} {{ .Values.openvpn.route.mask }} 172.30.30.2
 
       #ifconfig-push 10.10.1ZZ.X 255.255.255.0
       #push "route 10.2YY.200.0 255.255.255.0 10.10.1ZZ.1"

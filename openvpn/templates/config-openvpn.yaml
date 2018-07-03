@@ -122,8 +122,6 @@ data:
       user nobody
       group nogroup
 
-      #ifconfig {{ add .Values.openvpn.OVPN_NETWORK }} {{ .Values.openvpn.OVPN_SUBNET }}
-
       route {{ .Values.openvpn.route.ip }} {{ .Values.openvpn.route.mask }}
 
       #ifconfig-push 10.10.1ZZ.X 255.255.255.0

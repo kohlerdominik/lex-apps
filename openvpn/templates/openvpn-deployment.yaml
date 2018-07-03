@@ -34,6 +34,9 @@ spec:
           capabilities:
             add:
               - NET_ADMIN
+          sysctls:
+            - name: net.ipv4.ip_forward
+              value: "1"
         resources:
           requests:
             cpu: "{{ .Values.resources.requests.cpu }}"
@@ -48,10 +51,6 @@ spec:
           - mountPath: /etc/openvpn/certs/
             name: certstorage
             readOnly: false
-      securityContext:
-      sysctls:
-      - name: net.ipv4.ip_forward
-        value: "1"
       volumes:
       - name: openvpn
         configMap:

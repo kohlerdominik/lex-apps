@@ -53,6 +53,7 @@ data:
       client
       nobind
       dev tun
+      cipher AES-256-CBC
       {{- if .Values.openvpn.redirectGateway }}
       redirect-gateway def1
       {{- end }}
@@ -69,7 +70,7 @@ data:
       `cat ${EASY_RSA_LOC}/pki/dh.pem`
       </dh>
       <connection>
-      remote ${HOST_IP}  11111 {{ .Values.openvpn.OVPN_PROTO }}
+      remote ${HOST_IP} {{ (add .Values.service.portOffset 0) }} {{ .Values.openvpn.OVPN_PROTO }}
       </connection>
       EOF
       cat pki/$1.ovpn
@@ -118,6 +119,8 @@ data:
       port  {{ .Values.service.internalPort }}
       dev tun
       status /tmp/openvpn-status.log
+
+      cypher AES-256-CBC
 
       user nobody
       group nogroup

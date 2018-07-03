@@ -77,7 +77,7 @@ data:
   configure.sh: |-
       #!/bin/sh
       /etc/openvpn/setup/setup-certs.sh
-      #iptables -t nat -A POSTROUTING -s {{ .Values.openvpn.OVPN_NETWORK }}/{{ .Values.openvpn.OVPN_SUBNET }} -o eth0 -j MASQUERADE
+      iptables -t nat -A POSTROUTING -s {{ .Values.openvpn.OVPN_NETWORK }}/{{ .Values.openvpn.OVPN_SUBNET }} -o eth0 -j MASQUERADE
       mkdir -p /dev/net
       if [ ! -c /dev/net/tun ]; then
           mknod /dev/net/tun c 10 200
@@ -100,9 +100,10 @@ data:
 
       openvpn --config /etc/openvpn/openvpn.conf
   openvpn.conf: |-
+      topology subnet
       server {{ .Values.openvpn.OVPN_NETWORK }} {{ .Values.openvpn.OVPN_SUBNET }}
-      #topology subnet
       verb 3
+
       key /etc/openvpn/certs/pki/private/server.key
       ca /etc/openvpn/certs/pki/ca.crt
       cert /etc/openvpn/certs/pki/issued/server.crt
@@ -124,7 +125,6 @@ data:
       #ifconfig {{ add .Values.openvpn.OVPN_NETWORK }} {{ .Values.openvpn.OVPN_SUBNET }}
 
       route {{ .Values.openvpn.route.ip }} {{ .Values.openvpn.route.mask }}
-      iroute {{ .Values.openvpn.route.ip }} {{ .Values.openvpn.route.mask }}
 
       #ifconfig-push 10.10.1ZZ.X 255.255.255.0
       #push "route 10.2YY.200.0 255.255.255.0 10.10.1ZZ.1"

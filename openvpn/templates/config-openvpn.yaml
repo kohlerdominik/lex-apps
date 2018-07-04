@@ -17,9 +17,23 @@ data:
     
     # port forwardings
     iptables -t nat -A PREROUTING -p tcp --dport 9901 -j DNAT --to-destination {{ .Values.forwarding.pf1.destination }}:{{ .Values.forwarding.pf1.port }}
+    iptables -t nat -A PREROUTING -p udp --dport 9901 -j DNAT --to-destination {{ .Values.forwarding.pf1.destination }}:{{ .Values.forwarding.pf1.port }}
     iptables -t nat -A PREROUTING -p tcp --dport 9902 -j DNAT --to-destination {{ .Values.forwarding.pf2.destination }}:{{ .Values.forwarding.pf2.port }}
+    iptables -t nat -A PREROUTING -p udp --dport 9902 -j DNAT --to-destination {{ .Values.forwarding.pf2.destination }}:{{ .Values.forwarding.pf2.port }}
     iptables -t nat -A PREROUTING -p tcp --dport 9903 -j DNAT --to-destination {{ .Values.forwarding.pf3.destination }}:{{ .Values.forwarding.pf3.port }}
-
+    iptables -t nat -A PREROUTING -p udp --dport 9903 -j DNAT --to-destination {{ .Values.forwarding.pf3.destination }}:{{ .Values.forwarding.pf3.port }}
+    iptables -t nat -A PREROUTING -p tcp --dport 9904 -j DNAT --to-destination {{ .Values.forwarding.pf4.destination }}:{{ .Values.forwarding.pf4.port }}
+    iptables -t nat -A PREROUTING -p udp --dport 9904 -j DNAT --to-destination {{ .Values.forwarding.pf4.destination }}:{{ .Values.forwarding.pf4.port }}
+    iptables -t nat -A PREROUTING -p tcp --dport 9905 -j DNAT --to-destination {{ .Values.forwarding.pf5.destination }}:{{ .Values.forwarding.pf5.port }}
+    iptables -t nat -A PREROUTING -p udp --dport 9905 -j DNAT --to-destination {{ .Values.forwarding.pf5.destination }}:{{ .Values.forwarding.pf5.port }}
+    iptables -t nat -A PREROUTING -p tcp --dport 9906 -j DNAT --to-destination {{ .Values.forwarding.pf6.destination }}:{{ .Values.forwarding.pf6.port }}
+    iptables -t nat -A PREROUTING -p udp --dport 9906 -j DNAT --to-destination {{ .Values.forwarding.pf6.destination }}:{{ .Values.forwarding.pf6.port }}
+    iptables -t nat -A PREROUTING -p tcp --dport 9907 -j DNAT --to-destination {{ .Values.forwarding.pf7.destination }}:{{ .Values.forwarding.pf7.port }}
+    iptables -t nat -A PREROUTING -p udp --dport 9907 -j DNAT --to-destination {{ .Values.forwarding.pf7.destination }}:{{ .Values.forwarding.pf7.port }}
+    iptables -t nat -A PREROUTING -p tcp --dport 9908 -j DNAT --to-destination {{ .Values.forwarding.pf8.destination }}:{{ .Values.forwarding.pf8.port }}
+    iptables -t nat -A PREROUTING -p udp --dport 9908 -j DNAT --to-destination {{ .Values.forwarding.pf8.destination }}:{{ .Values.forwarding.pf8.port }}
+    iptables -t nat -A PREROUTING -p tcp --dport 9909 -j DNAT --to-destination {{ .Values.forwarding.pf9.destination }}:{{ .Values.forwarding.pf9.port }}    
+    iptables -t nat -A PREROUTING -p udp --dport 9909 -j DNAT --to-destination {{ .Values.forwarding.pf9.destination }}:{{ .Values.forwarding.pf9.port }}    
 
   setup-certs.sh: |-
     #!/bin/bash

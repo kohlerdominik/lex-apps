@@ -88,7 +88,7 @@ questions:
   default: ""
   description: "Port forwarding Destination Port (e.g. 80)"
   type: string
-  label: Destination Port 3
+  label: Destination Port 2
   group: "Port Forwarding"
 - variable: forwarding.pf3.destination
   default: ""
@@ -101,5 +101,77 @@ questions:
   description: "Port forwarding Destination Port (e.g. 80)"
   type: string
   label: Destination Port 3
+  group: "Port Forwarding"
+- variable: forwarding.pf4.destination
+  default: ""
+  description: "Port forwarding Destination IP (e.g. 192.168.1.100)"
+  type: string
+  label: Destination 4
+  group: "Port Forwarding"
+- variable: forwarding.pf4.port
+  default: ""
+  description: "Port forwarding Destination Port (e.g. 80)"
+  type: string
+  label: Destination Port 4
+  group: "Port Forwarding"
+- variable: forwarding.pf5.destination
+  default: ""
+  description: "Port forwarding Destination IP (e.g. 192.168.1.100)"
+  type: string
+  label: Destination 5
+  group: "Port Forwarding"
+- variable: forwarding.pf5.port
+  default: ""
+  description: "Port forwarding Destination Port (e.g. 80)"
+  type: string
+  label: Destination Port 5
+  group: "Port Forwarding"
+- variable: forwarding.pf6.destination
+  default: ""
+  description: "Port forwarding Destination IP (e.g. 192.168.1.100)"
+  type: string
+  label: Destination 6
+  group: "Port Forwarding"
+- variable: forwarding.pf6.port
+  default: ""
+  description: "Port forwarding Destination Port (e.g. 80)"
+  type: string
+  label: Destination Port 6
+  group: "Port Forwarding"
+- variable: forwarding.pf7.destination
+  default: ""
+  description: "Port forwarding Destination IP (e.g. 192.168.1.100)"
+  type: string
+  label: Destination 7
+  group: "Port Forwarding"
+- variable: forwarding.pf7.port
+  default: ""
+  description: "Port forwarding Destination Port (e.g. 80)"
+  type: string
+  label: Destination Port 7
+  group: "Port Forwarding"
+- variable: forwarding.pf8.destination
+  default: ""
+  description: "Port forwarding Destination IP (e.g. 192.168.1.100)"
+  type: string
+  label: Destination 8
+  group: "Port Forwarding"
+- variable: forwarding.pf8.port
+  default: ""
+  description: "Port forwarding Destination Port (e.g. 80)"
+  type: string
+  label: Destination Port 8
+  group: "Port Forwarding"
+- variable: forwarding.pf9.destination
+  default: ""
+  description: "Port forwarding Destination IP (e.g. 192.168.1.100)"
+  type: string
+  label: Destination 9
+  group: "Port Forwarding"
+- variable: forwarding.pf9.port
+  default: ""
+  description: "Port forwarding Destination Port (e.g. 80)"
+  type: string
+  label: Destination Port 9
   group: "Port Forwarding"
   

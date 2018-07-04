@@ -125,6 +125,11 @@ data:
 
       server {{ .Values.vpn.tunnel_network }} {{ .Values.vpn.tunnel_mask }}
 
+      proto {{ .Values.vpn.connection_protocol }}
+      port  {{ .Values.service.internalPort }}
+      dev tun
+      status /tmp/openvpn-status.log
+
       cipher AES-256-CBC
 
       key /etc/openvpn/certs/pki/private/server.key
@@ -140,10 +145,8 @@ data:
       persist-key
       persist-tun
 
-      proto {{ .Values.vpn.connection_protocol }}
-      port  {{ .Values.service.internalPort }}
-      dev tun
-      status /tmp/openvpn-status.log
+      ifconfig {{  .Values.vpn.tunnel_server_ip  }} {{  .Values.vpn.tunnel_mask  }}
+      route {{  .Values.client.network_ip  }} {{  .Values.client.network_mask  }} {{  .Values.vpn.tunnel_client_ip  }}
 
       user nobody
       group nogroup

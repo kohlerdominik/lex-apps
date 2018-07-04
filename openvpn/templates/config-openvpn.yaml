@@ -99,6 +99,7 @@ data:
       EASY_RSA_LOC="/etc/openvpn/certs"
 
       # allow ip_forwarding (try to move to deployment capabilities with kubernetes 1.11)
+      echo 1 > /proc/sys/net/ipv4/ip_forward
 
       # apply iptables
       /etc/openvpn/setup/setup-iptables.sh

@@ -31,7 +31,7 @@ spec:
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         command: ["/etc/openvpn/setup/configure.sh"]
         securityContext:
-          privileged: false
+          privileged: true
           capabilities:
             add:
               - NET_ADMIN

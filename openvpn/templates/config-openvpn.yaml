@@ -58,7 +58,6 @@ data:
       # fill ovpn file
       cat >${EASY_RSA_LOC}/pki/${SERVICE_ID}.ovpn <<EOF
       client
-      nobind
       dev tun
       cipher AES-256-CBC
       key-direction 1

@@ -35,6 +35,7 @@ data:
       ./easyrsa init-pki
       echo "ca\n" | ./easyrsa build-ca nopass
       ./easyrsa build-server-full server nopass
+      echo "Starting gen-dh. This takes long time..."
       ./easyrsa gen-dh > /dev/null 2>&1
       openvpn --genkey --secret pki/ta.key
     fi

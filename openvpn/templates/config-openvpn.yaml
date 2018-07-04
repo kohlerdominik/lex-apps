@@ -158,5 +158,5 @@ data:
 
   client-ccd.conf: |-
     ifconfig-push {{  .Values.vpn.tunnel_client_ip  }} {{  .Values.vpn.tunnel_mask  }}
-    push "route 10.0.0.0 255.255.255.0 {{  .Values.vpn.tunnel_server_ip  }}"
+    push "route 10.0.0.0 255.0.0.0 {{  .Values.vpn.tunnel_server_ip  }}"
     iroute {{  .Values.client.network_ip  }} {{  .Values.client.network_mask  }}

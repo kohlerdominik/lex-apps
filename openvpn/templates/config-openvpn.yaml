@@ -114,8 +114,8 @@ data:
       fi
 
       cp -f /etc/openvpn/setup/openvpn.conf /etc/openvpn/
-      mkdir -p /etc/openvpn/certs/ccd/
-      cp -f /etc/openvpn/setup/client-ccd.conf /etc/openvpn/certs/ccd/${SERVICE_ID}
+      mkdir -p /etc/openvpn/ccd/
+      cp -f /etc/openvpn/setup/client-ccd.conf /etc/openvpn/ccd/${SERVICE_ID}
 
       openvpn --config /etc/openvpn/openvpn.conf
 
@@ -138,7 +138,7 @@ data:
       dh /etc/openvpn/certs/pki/dh.pem
       tls-auth /etc/openvpn/certs/pki/ta.key
 
-      client-config-dir /etc/openvpn/certs/ccd
+      client-config-dir /etc/openvpn/ccd
 
       key-direction 0
       keepalive 10 60

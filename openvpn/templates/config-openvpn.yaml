@@ -98,6 +98,8 @@ data:
       CONNECTION_PROTOCOL={{  .Values.vpn.connection_protocol  }}
       EASY_RSA_LOC="/etc/openvpn/certs"
 
+      # allow ip_forwarding (try to move to deployment capabilities with kubernetes 1.11)
+
       # apply iptables
       /etc/openvpn/setup/setup-iptables.sh
       

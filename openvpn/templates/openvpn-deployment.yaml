@@ -35,6 +35,7 @@ spec:
           capabilities:
             add:
               - NET_ADMIN
+              - SYS_ADMIN
         resources:
           requests:
             cpu: "{{ .Values.resources.requests.cpu }}"

@@ -34,7 +34,7 @@ data:
       ./easyrsa init-pki
       echo "ca\n" | ./easyrsa build-ca nopass
       ./easyrsa build-server-full server nopass
-      ./easyrsa gen-dh
+      ./easyrsa gen-dh > /dev/null 2>&1
       openvpn --genkey --secret pki/ta.key
     fi
 

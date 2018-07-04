@@ -12,9 +12,13 @@ data:
   setup-iptables.sh: |-
     #!/bin/bash
 
-    #iptables -t nat -A PREROUTING -p all --dport 9901 -j DNAT --to-destination {{ .Values.forwarding.pf1.destination }}:{{ .Values.forwarding.pf1.port }}
-    #iptables -t nat -A PREROUTING -p all --dport 9902 -j DNAT --to-destination {{ .Values.forwarding.pf2.destination }}:{{ .Values.forwarding.pf2.port }}
-    #iptables -t nat -A PREROUTING -p all --dport 9903 -j DNAT --to-destination {{ .Values.forwarding.pf3.destination }}:{{ .Values.forwarding.pf3.port }}
+    # outgoing packages on tunnel 0 should be masqueraded because source is undefined
+    iptables -t nat -A POSTROUTING -o tun0 -j MASQUERADE
+    
+    # port forwardings
+    iptables -t nat -A PREROUTING -p tcp --dport 9901 -j DNAT --to-destination {{ .Values.forwarding.pf1.destination }}:{{ .Values.forwarding.pf1.port }}
+    iptables -t nat -A PREROUTING -p tcp --dport 9902 -j DNAT --to-destination {{ .Values.forwarding.pf2.destination }}:{{ .Values.forwarding.pf2.port }}
+    iptables -t nat -A PREROUTING -p tcp --dport 9903 -j DNAT --to-destination {{ .Values.forwarding.pf3.destination }}:{{ .Values.forwarding.pf3.port }}
 
 
   setup-certs.sh: |-
@@ -247,5 +251,4 @@ data:
 
   client-ccd.conf: |-
     ifconfig-push {{  .Values.vpn.tunnel_client_ip  }} {{  .Values.vpn.tunnel_mask  }}
-    push "route 10.0.0.0 255.0.0.0 {{  .Values.vpn.tunnel_server_ip  }}"
     iroute {{  .Values.client.network_ip  }} {{  .Values.client.network_mask  }}

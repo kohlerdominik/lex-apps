@@ -140,7 +140,7 @@ data:
       ca /etc/openvpn/certs/pki/ca.crt
       cert /etc/openvpn/certs/pki/issued/server.crt
       dh /etc/openvpn/certs/pki/dh.pem
-      tls-auth /etc/openvpn/certs/pki/ta.key
+      tls-auth /etc/openvpn/certs/pki/ta.key 0
 
       client-config-dir /etc/openvpn/ccd
 

@@ -70,3 +70,21 @@ forwarding:
   pf3:
     destination: 127.0.0.1
     port: 8999
+  pf4:
+    destination: 127.0.0.1
+    port: 8999
+  pf5:
+    destination: 127.0.0.1
+    port: 8999
+  pf6:
+    destination: 127.0.0.1
+    port: 8999
+  pf7:
+    destination: 127.0.0.1
+    port: 8999
+  pf8:
+    destination: 127.0.0.1
+    port: 8999
+  pf9:
+    destination: 127.0.0.1
+    port: 8999

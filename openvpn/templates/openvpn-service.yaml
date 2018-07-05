@@ -57,6 +57,66 @@ spec:
       protocol: TCP
       port: {{ (add .Values.vpn.server_port 3) }}
       nodePort: {{ (add .Values.vpn.server_port 3) }}
+    - name: pfwd4-udp
+      targetPort: 9904
+      protocol: UDP
+      port: {{ (add .Values.vpn.server_port 4) }}
+      nodePort: {{ (add .Values.vpn.server_port 4) }}
+    - name: pfwd4-tcp
+      targetPort: 9904
+      protocol: TCP
+      port: {{ (add .Values.vpn.server_port 4) }}
+      nodePort: {{ (add .Values.vpn.server_port 4) }}
+    - name: pfwd5-udp
+      targetPort: 9905
+      protocol: UDP
+      port: {{ (add .Values.vpn.server_port 5) }}
+      nodePort: {{ (add .Values.vpn.server_port 5) }}
+    - name: pfwd5-tcp
+      targetPort: 9905
+      protocol: TCP
+      port: {{ (add .Values.vpn.server_port 5) }}
+      nodePort: {{ (add .Values.vpn.server_port 5) }}
+    - name: pfwd6-udp
+      targetPort: 9906
+      protocol: UDP
+      port: {{ (add .Values.vpn.server_port 6) }}
+      nodePort: {{ (add .Values.vpn.server_port 6) }}
+    - name: pfwd6-tcp
+      targetPort: 9906
+      protocol: TCP
+      port: {{ (add .Values.vpn.server_port 6) }}
+      nodePort: {{ (add .Values.vpn.server_port 6) }}
+    - name: pfwd7-udp
+      targetPort: 9907
+      protocol: UDP
+      port: {{ (add .Values.vpn.server_port 7) }}
+      nodePort: {{ (add .Values.vpn.server_port 7) }}
+    - name: pfwd77-tcp
+      targetPort: 9907
+      protocol: TCP
+      port: {{ (add .Values.vpn.server_port 7) }}
+      nodePort: {{ (add .Values.vpn.server_port 7) }}
+    - name: pfwd8-udp
+      targetPort: 9908
+      protocol: UDP
+      port: {{ (add .Values.vpn.server_port 8) }}
+      nodePort: {{ (add .Values.vpn.server_port 8) }}
+    - name: pfwd6-tcp
+      targetPort: 9908
+      protocol: TCP
+      port: {{ (add .Values.vpn.server_port 8) }}
+      nodePort: {{ (add .Values.vpn.server_port 8) }}
+    - name: pfwd9-udp
+      targetPort: 9909
+      protocol: UDP
+      port: {{ (add .Values.vpn.server_port 9) }}
+      nodePort: {{ (add .Values.vpn.server_port 9) }}
+    - name: pfwd6-tcp
+      targetPort: 9909
+      protocol: TCP
+      port: {{ (add .Values.vpn.server_port 9) }}
+      nodePort: {{ (add .Values.vpn.server_port 9) }}
   selector:
     app: {{ template "openvpn.name" . }}
     release: {{ .Release.Name }}

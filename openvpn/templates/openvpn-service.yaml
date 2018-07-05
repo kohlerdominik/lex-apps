@@ -92,7 +92,7 @@ spec:
       protocol: UDP
       port: {{ (add .Values.vpn.server_port 7) }}
       nodePort: {{ (add .Values.vpn.server_port 7) }}
-    - name: pfwd77-tcp
+    - name: pfwd7-tcp
       targetPort: 9907
       protocol: TCP
       port: {{ (add .Values.vpn.server_port 7) }}
@@ -102,7 +102,7 @@ spec:
       protocol: UDP
       port: {{ (add .Values.vpn.server_port 8) }}
       nodePort: {{ (add .Values.vpn.server_port 8) }}
-    - name: pfwd6-tcp
+    - name: pfwd8-tcp
       targetPort: 9908
       protocol: TCP
       port: {{ (add .Values.vpn.server_port 8) }}
@@ -112,7 +112,7 @@ spec:
       protocol: UDP
       port: {{ (add .Values.vpn.server_port 9) }}
       nodePort: {{ (add .Values.vpn.server_port 9) }}
-    - name: pfwd6-tcp
+    - name: pfwd9-tcp
       targetPort: 9909
       protocol: TCP
       port: {{ (add .Values.vpn.server_port 9) }}

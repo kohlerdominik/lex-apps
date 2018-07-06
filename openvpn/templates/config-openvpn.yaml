@@ -78,26 +78,39 @@ data:
       # fill ovpn file
       cat >${EASY_RSA_LOC}/pki/${SERVICE_ID}.ovpn <<EOF
       # BEGIN OVPN CONFIG #
+      # Client Config
       client
       dev tun
       cipher AES-256-CBC
       comp-lzo
       key-direction 1
+
+      # Private Client Key
       <key>
       `cat ${EASY_RSA_LOC}/pki/private/${SERVICE_ID}.key`
       </key>
+
+      # Public Client Cert
       <cert>
       `cat ${EASY_RSA_LOC}/pki/issued/${SERVICE_ID}.crt`
       </cert>
+
+      # CA Cert
       <ca>
       `cat ${EASY_RSA_LOC}/pki/ca.crt`
       </ca>
+
+      # DH Key
       <dh>
       `cat ${EASY_RSA_LOC}/pki/dh.pem`
       </dh>
+
+      # TLS Auth Key
       <tls-auth>
       `cat ${EASY_RSA_LOC}/pki/ta.key`
       </tls-auth>
+
+      # Server Connection Config
       <connection>
       remote ${SERVER_ADDRESS} ${SERVER_PORT} ${CONNECTION_PROTOCOL}
       </connection>

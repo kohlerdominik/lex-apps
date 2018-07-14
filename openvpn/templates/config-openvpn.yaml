@@ -252,7 +252,7 @@ data:
       status /tmp/openvpn-status.log
 
       tun-mtu 1500
-      fragmentation 1300
+      fragment 1300
       mssfix 1300
       push "tun-mtu 1500"
       push "fragment 1300"

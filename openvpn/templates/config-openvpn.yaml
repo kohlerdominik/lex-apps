@@ -270,6 +270,8 @@ data:
       persist-tun
 
       ifconfig {{  .Values.vpn.tunnel_server_ip  }} {{  .Values.vpn.tunnel_mask  }}
+      route 10.168.168.168 255.255.255.255 {{  .Values.vpn.tunnel_client_ip  }}
+      route 192.168.168.168 255.255.255.255 {{  .Values.vpn.tunnel_client_ip  }}
       route {{  .Values.client.network_ip  }} {{  .Values.client.network_mask  }} {{  .Values.vpn.tunnel_client_ip  }}
 
       user nobody

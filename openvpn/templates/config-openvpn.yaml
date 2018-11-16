@@ -283,4 +283,6 @@ data:
   client-ccd.conf: |-
     push "keepalive 10 120"
     ifconfig-push {{  .Values.vpn.tunnel_client_ip  }} {{  .Values.vpn.tunnel_mask  }}
+    iroute 10.168.168.168 255.255.255.255
+    iroute 192.168.168.168 255.255.255.255
     iroute {{  .Values.client.network_ip  }} {{  .Values.client.network_mask  }}

@@ -48,6 +48,8 @@ vpn:
   # Tunnel IPs
   tunnel_server_ip: 172.30.30.1
   tunnel_client_ip: 172.30.30.2
+  tunnel_pool_start: 172.30.30.100
+  tunnel_pool_end: 172.30.30.200
   # Arbitrary lines appended to the end of the server configuration file
   # conf: |
   #  max-clients 100

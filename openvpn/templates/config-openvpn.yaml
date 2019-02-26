@@ -269,10 +269,15 @@ data:
       persist-key
       persist-tun
 
-      ifconfig {{  .Values.vpn.tunnel_server_ip  }} {{  .Values.vpn.tunnel_mask  }}
+      ifconfig {{ .Values.vpn.tunnel_server_ip }} {{  .Values.vpn.tunnel_mask  }}
+      ifconfig-pool {{ .Values.vpn.tunnel_pool_start }} {{ .Values.vpn.tunnel_pool_end }} {{  .Values.vpn.tunnel_mask  }}
+      
       route 10.168.168.168 255.255.255.255 {{  .Values.vpn.tunnel_client_ip  }}
       route 192.168.168.168 255.255.255.255 {{  .Values.vpn.tunnel_client_ip  }}
       route {{  .Values.client.network_ip  }} {{  .Values.client.network_mask  }} {{  .Values.vpn.tunnel_client_ip  }}
+      push "route 10.168.168.168 255.255.255.255"
+      push "route 192.168.168.168 255.255.255.255"
+      push "route {{  .Values.client.network_ip  }} {{  .Values.client.network_mask  }}"
 
       user nobody
       group nogroup

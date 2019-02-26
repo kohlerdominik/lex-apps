@@ -242,9 +242,13 @@ data:
 
 
   openvpn.conf: |-
-      topology subnet
 
-      proto {{ .Values.vpn.connection_protocol }}-server
+      topology subnet
+      push "topology subnet"
+
+      mode server
+      tls-server
+      proto {{ .Values.vpn.connection_protocol }}
       port  {{ .Values.service.internalPort }}
       dev tun
       status /tmp/openvpn-status.log
@@ -273,6 +277,7 @@ data:
       route 10.168.168.168 255.255.255.255 {{  .Values.vpn.tunnel_client_ip  }}
       route 192.168.168.168 255.255.255.255 {{  .Values.vpn.tunnel_client_ip  }}
       route {{  .Values.client.network_ip  }} {{  .Values.client.network_mask  }} {{  .Values.vpn.tunnel_client_ip  }}
+      push "route-gateway {{ .Values.vpn.tunnel_server_ip }}"
       push "route 10.168.168.168 255.255.255.255"
       push "route 192.168.168.168 255.255.255.255"
       push "route {{  .Values.client.network_ip  }} {{  .Values.client.network_mask  }}"

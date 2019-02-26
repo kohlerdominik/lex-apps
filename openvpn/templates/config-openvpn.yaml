@@ -244,7 +244,7 @@ data:
   openvpn.conf: |-
       topology subnet
 
-      proto {{ .Values.vpn.connection_protocol }}
+      proto {{ .Values.vpn.connection_protocol }}-server
       port  {{ .Values.service.internalPort }}
       dev tun
       status /tmp/openvpn-status.log

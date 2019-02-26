@@ -248,7 +248,11 @@ data:
 
       mode server
       tls-server
-      proto {{ .Values.vpn.connection_protocol }}
+      {{ if (eq "udp" .Values.vpn.connection_protocol) }}
+      proto udp
+      {{ else }}
+      proto tcp-server
+      {{ end }}
       port  {{ .Values.service.internalPort }}
       dev tun
       status /tmp/openvpn-status.log

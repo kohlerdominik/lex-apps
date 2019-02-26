@@ -244,8 +244,6 @@ data:
   openvpn.conf: |-
       topology subnet
 
-      server {{ .Values.vpn.tunnel_network }} {{ .Values.vpn.tunnel_mask }}
-
       proto {{ .Values.vpn.connection_protocol }}
       port  {{ .Values.service.internalPort }}
       dev tun

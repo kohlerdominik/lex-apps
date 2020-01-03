@@ -268,7 +268,7 @@ data:
 
       client-config-dir /etc/openvpn/ccd
 
-      comp-lzo
+      comp-lzo no
 
       key-direction 0
       keepalive 10 60

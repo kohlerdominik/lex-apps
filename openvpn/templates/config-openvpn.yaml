@@ -271,7 +271,9 @@ data:
       comp-lzo no
 
       key-direction 0
-      keepalive 10 60
+      #keepalive 10 60
+      ping 0
+      ping-restart 0
       persist-key
       persist-tun
 
